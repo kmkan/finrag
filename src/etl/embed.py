@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
-from fetch import fetch_all
-from chunk import process_article
+from etl.fetch import fetch_all
+from etl.chunk import process_article
 
 MODAL_NAME = 'all-MiniLM-L6-v2'
 MODAL = None
