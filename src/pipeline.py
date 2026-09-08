@@ -13,3 +13,6 @@ def run():
     embedded = embed_chunks(chunks)
     stored = store_chunks(embedded)
     print(f'Pipeline ran successfully. Stored {stored} chunks. Chunks in collection: {get_collection().count()}.')
+
+if __name__ == '__main__':
+    run()
