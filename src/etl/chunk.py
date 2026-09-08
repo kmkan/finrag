@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from fetch import fetch_all
+from etl.fetch import fetch_all
 
 CHUNK_SIZE = 200
 CHUNK_OVERLAP = 40

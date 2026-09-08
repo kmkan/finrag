@@ -1,14 +1,13 @@
 import hashlib
 import chromadb
-from fetch import fetch_all
-from chunk import process_article
-from embed import embed_chunks
+from etl.fetch import fetch_all
+from etl.chunk import process_article
+from etl.embed import embed_chunks
 
 DB_PATH = 'data/chroma'
 COLLECTION_NAME = 'news'
 
 client = None
-
 
 def get_client() -> chromadb.PersistentClient:
     global client
