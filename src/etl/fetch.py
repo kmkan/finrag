@@ -39,5 +39,5 @@ if __name__ == '__main__':
     articles = fetch_all(FEEDS)
     print(f'Fetched {len(articles)} articles.')
     for a in articles:
-        print(f'- [{a['source']}] {a['title']}')
+        print(f'[{a['source']}] {a['title']} {a['summary']}')
     
