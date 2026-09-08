@@ -2,12 +2,13 @@ from sentence_transformers import SentenceTransformer
 from fetch import fetch_all
 from chunk import process_article
 
+MODAL_NAME = 'all-MiniLM-L6-v2'
 MODAL = None
 
 def get_model():
     global MODAL
     if MODAL == None:
-        MODAL = SentenceTransformer('all-MiniLM-L6-v2')
+        MODAL = SentenceTransformer(MODAL_NAME)
     return MODAL
 
 def embed_chunks(chunks):
