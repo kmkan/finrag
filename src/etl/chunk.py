@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-from etl.fetch import fetch_all
 
 CHUNK_SIZE = 200
 CHUNK_OVERLAP = 40
@@ -41,6 +40,7 @@ def process_article(article):
     return chunked_articles
 
 if __name__ == '__main__':
+    from fetch import fetch_all
     articles = fetch_all()
     chunks = []
     for article in articles:
