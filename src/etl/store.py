@@ -1,8 +1,5 @@
 import hashlib
 import chromadb
-from etl.fetch import fetch_all
-from etl.chunk import process_article
-from etl.embed import embed_chunks
 
 DB_PATH = 'data/chroma'
 COLLECTION_NAME = 'news'
@@ -57,6 +54,10 @@ def store_chunks(chunks) -> int:
 
 
 if __name__ == '__main__':
+    from fetch import fetch_all
+    from chunk import process_article
+    from embed import embed_chunks
+    
     articles = fetch_all()
     chunks = []
     for article in articles:
