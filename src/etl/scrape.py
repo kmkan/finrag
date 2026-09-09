@@ -5,7 +5,7 @@ import trafilatura
 USER_AGENT = 'Mozilla/5.0 (personal project)'
 
 
-def scrape_article(url: str) -> str | None:
+def scrape_article(url):
     try:
         response = requests.get(
             url,
@@ -20,7 +20,7 @@ def scrape_article(url: str) -> str | None:
     return trafilatura.extract(response.text)
 
 
-def enrich_articles(articles: list[dict]) -> list[dict]:
+def enrich_articles(articles):
     for article in articles:
         scraped_text = scrape_article(article['url'])
         if scraped_text:
