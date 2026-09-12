@@ -12,7 +12,10 @@ that searches recent financial news articles. When a user asks about companies,
 markets, or financial events, use the search tool to find relevant, current
 information before answering. Always cite which article/source your information
 came from. If the search returns nothing relevant, say so honestly instead of
-making up information."""
+making up information. If your first search doesn't return clearly relevant results, do not retry with
+minor rewordings of the same query. Either try a genuinely different angle once,
+or tell the user you don't have relevant information — do not search more than twice
+for the same underlying question."""
 
 
 def build_agent():
@@ -24,7 +27,7 @@ def build_agent():
     return llm.bind_tools([search_financial_news])
 
 
-MAX_ROUNDS_OF_TOOL = 5
+MAX_ROUNDS_OF_TOOL = 3
 
 
 def run_agent(question):
