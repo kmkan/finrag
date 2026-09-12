@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "./App.css";
 
-const API_URL = "http://localhost:8000/chat";
+const API_URL = "http://56.112.45.43:8000/chat";
 
 function App() {
   const [messages, setMessages] = useState([]);
