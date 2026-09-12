@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./App.css";
 
 const API_URL = "http://56.112.45.43:8000/chat";
@@ -69,14 +70,14 @@ function App() {
           {messages.length === 0 && (
             <div className="empty-state">
               <h2>Ask about the news</h2>
-              <p>Try "what's happening with aerospace stocks" or "any AI chip news?"</p>
+              <p>Try "What is the current stock price of Apple?" or "What is the outlook on Amazon?"</p>
             </div>
           )}
 
           {messages.map((msg, i) => (
             <div key={i} className={`bubble-row ${msg.role}`}>
               <div className={`bubble ${msg.role}`}>
-                <ReactMarkdown>{msg.text}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
               </div>
             </div>
           ))}
