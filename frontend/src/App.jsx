@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./App.css";
 
-const API_URL = "http://56.112.45.43:8000/chat";
+const API_URL = "http://56.112.37.178:8000/chat";
 
 function App() {
   const [messages, setMessages] = useState([]);
