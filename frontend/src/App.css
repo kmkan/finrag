@@ -192,3 +192,18 @@ button:disabled {
   color: #a3a8b3;
   cursor: not-allowed;
 }
+
+.bubble-text table,
+.bubble table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 0.9rem;
+}
+
+.bubble-text th, .bubble-text td,
+.bubble th, .bubble td {
+  border: 1px solid #e1e3e8;
+  padding: 6px 10px;
+  text-align: left;
+}
