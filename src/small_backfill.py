@@ -7,7 +7,7 @@ from etl.embed import embed_chunks
 from etl.store import store_chunks, get_collection
 
 DAYS_BACK = 1
-MAX_ARTICLES_PER_TICKER = 10
+MAX_ARTICLES_PER_TICKER = 5
 
 to_date = datetime.now().strftime('%Y-%m-%d')
 from_date = (datetime.now() - timedelta(days=DAYS_BACK)).strftime('%Y-%m-%d')

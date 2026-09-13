@@ -10,6 +10,8 @@ def get_model():
     return MODAL
 
 def embed_chunks(chunks):
+    if not chunks:
+        return []
     model = get_model()
     texts = [chunk['chunk_text'] for chunk in chunks]
 
