@@ -31,7 +31,8 @@ def enrich_articles(articles):
             blocked_count += 1
             time.sleep(0.1)
 
-        print(f"  {i}/{total} processed ({blocked_count} failed so far)")
+        if i % 10 == 0:
+            print(f"  {i}/{total} processed ({blocked_count} failed so far)")
 
     return articles
 
