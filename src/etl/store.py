@@ -23,7 +23,9 @@ def _make_id(chunk):
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
-def store_chunks(chunks) -> int:
+def store_chunks(chunks):
+    if not chunks:
+        return 0
     collection = get_collection()
 
     ids = []
