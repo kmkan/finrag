@@ -7,7 +7,7 @@ from etl.embed import embed_chunks
 from etl.store import store_chunks, get_collection
 
 TICKER = 'AAPL'
-DAYS_BACK = 3
+DAYS_BACK = 1
 
 to_date = datetime.now().strftime('%Y-%m-%d')
 from_date = (datetime.now() - timedelta(days=DAYS_BACK)).strftime('%Y-%m-%d')
