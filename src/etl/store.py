@@ -41,6 +41,7 @@ def store_chunks(chunks) -> int:
             'url': chunk['url'],
             'chunk_index': chunk['chunk_index'],
             'published': str(chunk['published']) if chunk['published'] else '',
+            'ticker': chunk.get('ticker') or '',
         })
 
     collection.upsert(

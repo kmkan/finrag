@@ -36,6 +36,7 @@ def process_article(article):
             'title': article['title'],
             'url': article['url'],
             'published': article['published'],
+            'ticker': article.get('ticker'),
         })
     return chunked_articles
 

@@ -27,31 +27,35 @@ def run_backfill():
 
     for ticker in TICKERS:
         print(f'=== {ticker} ===')
-        ticker_articles = []
+        try:
+            ticker_articles = []
 
-        for from_date, to_date in ranges:
-            try:
-                articles = fetch_company_news(ticker, from_date, to_date)
-                ticker_articles.extend(articles)
-                print(f'  {from_date} to {to_date}: {len(articles)} articles')
-            except Exception as e:
-                print(f'  {from_date} to {to_date}: FAILED ({e})')
-            time.sleep(REQUEST_DELAY)
+            for from_date, to_date in ranges:
+                try:
+                    articles = fetch_company_news(ticker, from_date, to_date)
+                    ticker_articles.extend(articles)
+                    print(f'  {from_date} to {to_date}: {len(articles)} articles')
+                except Exception as e:
+                    print(f'  {from_date} to {to_date}: FAILED ({e})')
+                time.sleep(REQUEST_DELAY)
 
-        if not ticker_articles:
+            if not ticker_articles:
+                continue
+
+            print(f'  Scraping {len(ticker_articles)} articles...')
+            enriched = enrich_articles(ticker_articles)
+
+            chunks = []
+            for article in enriched:
+                chunks.extend(process_article(article))
+
+            embedded = embed_chunks(chunks)
+            stored = store_chunks(embedded)
+            total_stored += stored
+            print(f'  Stored {stored} chunks for {ticker}')
+        except Exception as e:
+            print(f'  TICKER {ticker} FAILED ENTIRELY: {e}')
             continue
-
-        print(f'  Scraping {len(ticker_articles)} articles...')
-        enriched = enrich_articles(ticker_articles)
-
-        chunks = []
-        for article in enriched:
-            chunks.extend(process_article(article))
-
-        embedded = embed_chunks(chunks)
-        stored = store_chunks(embedded)
-        total_stored += stored
-        print(f'  Stored {stored} chunks for {ticker}')
 
     total = get_collection().count()
     print(f'Backfill complete. Stored {total_stored} chunks this run. Collection total: {total}')
