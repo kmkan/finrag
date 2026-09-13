@@ -1,11 +1,11 @@
-from etl.fetch import fetch_all
+from etl.fetch_finnhub import fetch_incremental
 from etl.chunk import process_article
 from etl.embed import embed_chunks
 from etl.store import store_chunks, get_collection
 from etl.scrape import enrich_articles
 
 def run():
-    articles = fetch_all()
+    articles = fetch_incremental(days_back=2)
     articles = enrich_articles(articles)
     chunks = []
     
