@@ -2,6 +2,9 @@ import os
 import time
 import requests
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 FINNHUB_BASE = 'https://finnhub.io/api/v1'
 REQUEST_DELAY = 1.0  
